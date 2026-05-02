@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# 2) Elabore um script que seja capaz de criar uma cópia de segurança de um diretório específico
 read -p "Digite o nome do arquivo: " arquivo
 back_arq=$arquivo"_backup_$(date +%Y%m%d_%H%M%S)"
 
