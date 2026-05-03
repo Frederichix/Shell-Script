@@ -1,0 +1,9 @@
+1 - Crie um script que utiliza os comandos ps e grep para monitorar processos que estão utilizando uma porcentagem significativa de cpu
+
+2 - Desenvolva um script que utiliza comandos como ps e sort para exibir os processos que estão consumindo mais memória
+
+3 - Crie um script que verifica se um processo específico está em execução e exibe o seu status
+
+4 - Elabore um script para analisar os logs do sistema em busca de mensagens de erro relacionadas a processos
+
+5 - Crie um script para monitorar as mensagens de erro no log do sistema em intervalos regulares usando cron jobs. o script deve registrar em um arquivo as últimas 5 linahs de mensagens de erro, possibilitando uma visão periódica da atividade do sistema
