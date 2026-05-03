@@ -1,22 +1,42 @@
 #!/bin/bash
 
-echo "1) Compactar"
-echo "2) Descompactar"
-echo "X) Sair"
+echo "(C) - Compactar"
+echo "(D) - Descompactar"
+echo "(X) - Sair"
 
 read -p "Opção: " option
 
-case $option in
-    1)
-        read -p "Digite o nome do arquivo: " arquivo
-        bkp_arq=$arquivo"_backup_$(date +%Y%m%_d%H%M%S).tar.gz"
-            for arquivos in $arquivo; do
-                if [ -f $arquivos ]; then
-                    tar -czf $bkp_arq $arquivos
-                    echo "Backup do arquivo: $arquivos criado com sucesso!"
-                else
-                    echo "Arquivo não encontrado: $arquivos"
-                fi
-            done
+case "$option" in
+    "C")
+        while true
+        do
+            read -p "Digite o nome do arquivo a ser compactado: " arquivo
+            timestamp=$arquivo"_bkp_$(date +%Y%m%d_%H%M%S)".tar.gz
+            
+            if [ -f "$arquivo" ]; then
+                tar -czf $timestamp $arquivo
+                echo "Arquivo compactado com sucesso!"
+                ls -lah $timestamp
+                break
+            elif [ -d "$arquivo" ]; then
+                echo "A compactação espera um arquivo, e não um diretório" 
+            fi
+        done
+        ;;
+    "D")
+        while true
+        do
+            read -p "Digite o nome do arquivo para descompactar: " descompactar
+            if [ -f "$descompactar" ]; then
+                tar -xvzf $descompactar -C ../descompactado/
+                echo "Arquivo descompactado com sucesso!"
+                ls -la ../descompactado/
+                break
+            fi
+        done
+    ;;
+    "X")
+        echo "Bye!"
+        exit
     ;;
 esac
